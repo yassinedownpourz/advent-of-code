@@ -21,7 +21,7 @@ const partOne: PartOne = (input) => {
         return levelDifference(currLevel, adjLevel);
       }),
     )
-    .map((report: number[]) => {
+    .filter((report: number[]) => {
       const allLevelsIncreasing = report.every((levelDifference: number) =>
         new Set([1, 2, 3]).has(levelDifference),
       );
@@ -31,14 +31,14 @@ const partOne: PartOne = (input) => {
       return allLevelsIncreasing || allLevelsDecreasing;
     });
 
-  return safeReports.filter((isSafe: boolean) => isSafe).length;
+  return safeReports.length;
 };
 
 type PartTwo = (input: string) => number;
 const partTwo: PartTwo = (input) => {
   const reports = parseReports(input);
 
-  const safeReports = reports.map((report: number[]) =>
+  const safeReports = reports.filter((report: number[]) =>
     report.some((_, problemDampener: number) => {
       const dampenedReport = report.filter(
         (_, levelIndex) => problemDampener !== levelIndex,
@@ -60,7 +60,7 @@ const partTwo: PartTwo = (input) => {
     }),
   );
 
-  return safeReports.filter((isSafe: boolean) => isSafe).length;
+  return safeReports.length;
 };
 
 const FILE_NAME = "input.txt";
