@@ -28,8 +28,8 @@ const partOne: PartOne = (input) => {
     list.sort((a: number, b: number) => a - b),
   );
 
-  const pairListDistance = rightList.map((ID: number, index: number) =>
-    Math.abs(ID - leftList[index]),
+  const pairListDistance = rightList.map((id: number, index: number) =>
+    Math.abs(id - leftList[index]),
   );
 
   return sum(pairListDistance);
